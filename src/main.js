@@ -42,39 +42,34 @@ function estilizarMural() {
   );
 }
 
-function inserirIMG(url, autor) {
-  // card
-  const card = document.createElement("div");
+function inserirIMG(url, author) {
+  let container = document.createElement("div");
 
-  card.classList.add("mb-5", "break-inside-avoid");
+  container.className = `
+    mb-5 break-inside-avoid overflow-hidden rounded-xl bg-white shadow-md
+    transition duration-300
+    hover:scale-[1.03] hover:shadow-2xl hover:brightness-95
+  `;
 
-  // imagem
-  const img = document.createElement("img");
-
+  let img = document.createElement("img");
   img.src = url;
-  img.alt = `Foto de ${autor}`;
 
-  img.classList.add(
-    "rounded-xl",
-    "w-full",
-    "hover:scale-105",
-    "transition-all",
-    "duration-300",
-  );
+  img.className = `
+    w-full rounded-t-xl
+    transition duration-300
+    hover:blur-[1px]
+  `;
 
-  // nome do autor
-  const nomeAutor = document.createElement("p");
+  let authorNome = document.createElement("p");
+  authorNome.textContent = `Foto por ${author}`;
 
-  nomeAutor.textContent = autor;
+  authorNome.className = `
+    p-3 text-center text-sm font-semibold text-slate-700
+  `;
 
-  nomeAutor.classList.add("mt-2", "font-semibold", "text-sm");
-
-  // adiciona no card
-  card.appendChild(img);
-  card.appendChild(nomeAutor);
-
-  // adiciona card na página
-  main.appendChild(card);
+  container.appendChild(img);
+  container.appendChild(authorNome);
+  main.appendChild(container);
 }
 
 function modoEscuro() {
